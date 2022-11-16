@@ -12,5 +12,9 @@ public class Controller {
         return "Hola, mi nombre es Elis" ;
     }
 
+    @PostMapping("/goodbye")
+    public String goodbye(){
+        return "Hasta luego";
+    }
 }
 
