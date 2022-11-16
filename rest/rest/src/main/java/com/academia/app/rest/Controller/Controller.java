@@ -8,18 +8,14 @@ import org.springframework.http.ResponseEntity;
 public class Controller {
 
     @GetMapping("/hello")
-    public String hello() {
-        return "Hola, mi nombre es Elis" ;
+    public ResponseEntity hello() {
+        return ResponseEntity.status(HttpStatus.OK).body("Hola, mi nombre es Maria Elisa y me dices Lis") ;
     }
 
     @PostMapping("/goodbye")
-    public String goodbye(){
-        return "Hasta luego";
+    public ResponseEntity goodbye(){
+        return ResponseEntity.status(HttpStatus.OK).body("Hasta luego");
     }
-
-    @PostMapping("/goodbyer")
-    public ResponseEntity goodbyer(){
-        return ResponseEntity.status(HttpStatus.OK).body("Adios desde el response entity");
-    }
+    
 }
 
