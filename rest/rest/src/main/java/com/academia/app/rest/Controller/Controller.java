@@ -1,8 +1,8 @@
 package com.academia.app.rest.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 public class Controller {
@@ -15,6 +15,11 @@ public class Controller {
     @PostMapping("/goodbye")
     public String goodbye(){
         return "Hasta luego";
+    }
+
+    @PostMapping("/goodbyer")
+    public ResponseEntity goodbyer(){
+        return ResponseEntity.status(HttpStatus.OK).body("Adios desde el response entity");
     }
 }
 
