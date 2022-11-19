@@ -9,7 +9,7 @@ public class Controller {
 
     @GetMapping("/hello")
     public ResponseEntity hello() {
-        return ResponseEntity.status(HttpStatus.OK).body("Hola, mi nombre es Maria Elisa y me dices Lis") ;
+        return ResponseEntity.status(HttpStatus.OK).body("Hola, mi nombre es Maria Elisa y me llaman Lis") ;
     }
 
     @PostMapping("/goodbye")
