@@ -3,7 +3,7 @@ package com.academia.app.rest.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+//Que sea un enrutador -> Toma las peticiones y las redirige para que sean tratadas
 @RestController
 public class Controller {
 
