@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ContactAddedDTO {
+public class MesageDTO {
     private Integer id;
     private String mensaje;
 }
