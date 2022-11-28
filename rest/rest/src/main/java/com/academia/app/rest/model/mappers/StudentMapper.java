@@ -18,7 +18,10 @@ public class StudentMapper {
     public StudentDTO studentEntityToStudentDTO(StudentEntity studentEntity){
         return Optional
                 .ofNullable(studentEntity)
-                .map(entity -> new StudentDTO(entity.getId(),entity.getName(),entity.getSurname()))
+                .map(entity -> new StudentDTO(
+                        entity.getId(),
+                        entity.getName(),
+                        entity.getSurname()))
                 .orElse(new StudentDTO());
     }
 }

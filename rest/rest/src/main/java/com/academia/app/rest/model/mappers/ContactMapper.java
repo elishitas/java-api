@@ -21,7 +21,10 @@ public class ContactMapper {
     public ContactDTO contactEntityToContactDTO(ContactEntity contactEntity){
         return Optional
                 .ofNullable(contactEntity)
-                .map(entity -> new ContactDTO(entity.getId(), entity.getNombre(), entity.getCelular()))
+                .map(entity -> new ContactDTO(
+                        entity.getId(),
+                        entity.getNombre(),
+                        entity.getCelular()))
                 .orElse(new ContactDTO());
     }
 

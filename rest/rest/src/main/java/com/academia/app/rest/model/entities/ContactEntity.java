@@ -13,6 +13,7 @@ import javax.persistence.*;
 public class ContactEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Column(name = "id", columnDefinition = "INT UNSIGNED")
     private Integer id;
 
