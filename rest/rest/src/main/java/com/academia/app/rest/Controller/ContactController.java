@@ -11,24 +11,24 @@ import java.util.List;
 @RestController
 @RequestMapping("/contact")
 public class ContactController {
-    private final ContactService contacService;
+    private final ContactService contactService;
 
-    public ContactController(ContactService contacService){
-        this.contacService = contacService;
+    public ContactController(ContactService contactService){
+        this.contactService = contactService;
     }
 
     @GetMapping
     public ResponseEntity<List<ContactDTO>> findTodos(){
-        return ResponseEntity.ok(contacService.findAll());
+        return ResponseEntity.ok(contactService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ContactDTO> findOne(@PathVariable("id") Integer id){
-        return ResponseEntity.ok(contacService.findById(id));
+        return ResponseEntity.ok(contactService.findById(id));
     }
 
     @PostMapping
     public ResponseEntity<MessageDTO> add(@RequestBody ContactDTO contactDTO){
-        return ResponseEntity.ok(contacService.add(contactDTO));
+        return ResponseEntity.ok(contactService.add(contactDTO));
     }
 }
