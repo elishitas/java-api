@@ -15,7 +15,8 @@ public class ContactService {
     private final ContactRepository contactRepository;
     private final ContactMapper contactMapper;
 
-    public ContactService(ContactRepository contactRepository, ContactMapper contactMapper) {
+    public ContactService(ContactRepository contactRepository,
+                          ContactMapper contactMapper) {
         this.contactRepository = contactRepository;
         this.contactMapper = contactMapper;
     }
