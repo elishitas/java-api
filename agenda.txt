@@ -1,3 +1,5 @@
-1 - Crear Repositorio en Master
-
+0 - Crear Repositorio en Master.
+1 - D1, 2 endopoints en D1.
+2 - D2, Circuito y conexión de la bd en D2.
+3 - D3, manejo de excepciones + sepación de código
 
