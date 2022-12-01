@@ -1,6 +1,7 @@
 package com.academia.app.rest.services;
 
 import com.academia.app.rest.model.domain.StudentDTO;
+import com.academia.app.rest.model.entities.StudentEntity;
 import com.academia.app.rest.model.mappers.StudentMapper;
 import com.academia.app.rest.model.repositories.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,12 @@ public class StudentService {
                 .map(entity->studentRepository.save(entity))
                 .map(entity->studentMapper.studentEntityToStudentDTO(entity))
                 .orElse(new StudentDTO());
+    }
+
+    public StudentDTO findById(Integer studentId){
+        return studentRepository
+                .findById(studentId)
+                .map(studentEntity -> studentMapper.studentEntityToStudentDTO(studentEntity))
+                .orElse(new StudentEntity());
     }
 }
