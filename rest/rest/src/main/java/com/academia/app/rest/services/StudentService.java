@@ -1,5 +1,6 @@
 package com.academia.app.rest.services;
 
+import com.academia.app.rest.exceptions.exceptionskind.StudentNotFoundException;
 import com.academia.app.rest.model.domain.StudentDTO;
 import com.academia.app.rest.model.entities.StudentEntity;
 import com.academia.app.rest.model.mappers.StudentMapper;
@@ -39,6 +40,6 @@ public class StudentService {
         return studentRepository
                 .findById(studentId)
                 .map(studentMapper::studentEntityToStudentDTO)
-                .orElse(new StudentEntity());
+                .orElseThrow(()->new StudentNotFoundException("No se encuentra el estudiante en el id especificado"));
     }
 }
