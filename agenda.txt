@@ -1,3 +1,15 @@
 1 - Crear Repositorio en Master
 
 
+
+
+
+
+
+
+Clase 3:  Se agregan variables de ambiente:
+spring.datasource.url=jdbc:mysql://localhost:3306/academia_java
+spring.datasource.username=root
+spring.datasource.password=
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
