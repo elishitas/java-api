@@ -11,4 +11,7 @@ public class ContactErrorMessageDTO {
     private String message;
     private String path;
     private String code;
+
+    public ContactErrorMessageDTO(String message) {
+    }
 }

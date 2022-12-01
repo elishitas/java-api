@@ -1,5 +1,6 @@
 package com.academia.app.rest.services;
 
+import com.academia.app.rest.exceptions.exceptionskind.ContactNotFoundException;
 import com.academia.app.rest.model.domain.ContactDTO;
 import com.academia.app.rest.model.domain.MessageDTO;
 import com.academia.app.rest.model.mappers.ContactMapper;
@@ -42,7 +43,7 @@ public class ContactService {
     public ContactDTO findById(Integer id){
         return contactRepository
                 .findById(id)
-                .map(contact -> contactMapper.contactEntityToContactDTO(contact))
-                .get();
+                .map(contactMapper::contactEntityToContactDTO)
+                .orElseThrow(()->new ContactNotFoundException("No se encuenta el contacto con el ID especificado"));
     }
 }
