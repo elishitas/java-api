@@ -38,7 +38,7 @@ public class StudentService {
     public StudentDTO findById(Integer studentId){
         return studentRepository
                 .findById(studentId)
-                .map(studentEntity -> studentMapper.studentEntityToStudentDTO(studentEntity))
+                .map(studentMapper::studentEntityToStudentDTO)
                 .orElse(new StudentEntity());
     }
 }
