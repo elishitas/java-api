@@ -22,5 +22,11 @@ public class StudentController {
     public ResponseEntity<StudentDTO> add(@RequestBody StudentDTO studentDTO){
         return ResponseEntity.ok(studentService.add(studentDTO));
     }
+
+    @GetMapping("/{studentId}")
+
+    public ResponseEntity<StudentDTO> findById(@PathVariable Integer studentId){
+        return ResponseEntity.ok(studentService.findById(studentId));
+    }
 }
 
