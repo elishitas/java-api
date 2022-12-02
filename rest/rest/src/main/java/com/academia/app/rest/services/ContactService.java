@@ -1,11 +1,13 @@
 package com.academia.app.rest.services;
 
+import com.academia.app.rest.exceptions.exceptionskind.ContactFoundException;
 import com.academia.app.rest.exceptions.exceptionskind.ContactNotFoundException;
 import com.academia.app.rest.model.domain.ContactDTO;
 import com.academia.app.rest.model.domain.MessageDTO;
 import com.academia.app.rest.model.mappers.ContactMapper;
 import com.academia.app.rest.model.repositories.ContactRepository;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.events.Event;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,6 +33,10 @@ public class ContactService {
     }
 
     public MessageDTO add(ContactDTO contactDTO){
+        if(contactRepository.findByNombre(contactDTO.getNombre()).isPresent()) throw new ContactFoundException("El nombre del contacto ya existe");
+
+        if(contactRepository.findByCelular(contactDTO.getCelular()).isPresent()) throw new ContactFoundException("El numero del contacto ya existe");
+
         return Optional
                 .ofNullable(contactDTO)
                 .map(dto -> contactMapper.contactDTOToContactEntity(dto))
@@ -41,9 +47,10 @@ public class ContactService {
     }
 
     public ContactDTO findById(Integer id){
-        return contactRepository
-                .findById(id)
+        return Optional
+                .ofNullable(id)
+                .map(idContacto -> contactRepository.findById(id).orElseThrow(()->new ContactNotFoundException("No se encuenta el contacto con el ID especificado")))
                 .map(contactMapper::contactEntityToContactDTO)
-                .orElseThrow(()->new ContactNotFoundException("No se encuenta el contacto con el ID especificado"));
+                .orElse(new ContactDTO());
     }
 }

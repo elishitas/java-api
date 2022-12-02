@@ -1,6 +1,7 @@
 package com.academia.app.rest.exceptions.handlers;
 
 import com.academia.app.rest.exceptions.dtos.ContactErrorMessageDTO;
+import com.academia.app.rest.exceptions.exceptionskind.ContactFoundException;
 import com.academia.app.rest.exceptions.exceptionskind.ContactNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,12 @@ public class ContactExceptionHandlers {
     @ExceptionHandler(ContactNotFoundException.class)
     @ResponseBody
     public  ResponseEntity<ContactErrorMessageDTO> notFoundExceptionHandler(HttpServletRequest req, Exception e){
-        return new ResponseEntity<>(new ContactErrorMessageDTO(e.getMessage()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ContactErrorMessageDTO(e.getMessage(),req.getRequestURI(), "Error 000"), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ContactFoundException.class)
+    @ResponseBody
+    public ResponseEntity<ContactErrorMessageDTO> contactFoundExceptionHandler(HttpServletRequest req, Exception e){
+        return new ResponseEntity<>(new ContactErrorMessageDTO(e.getMessage(),req.getRequestURI(), "001"), HttpStatus.BAD_REQUEST);
     }
 }

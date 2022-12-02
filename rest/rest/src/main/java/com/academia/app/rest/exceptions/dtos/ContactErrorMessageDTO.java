@@ -13,5 +13,6 @@ public class ContactErrorMessageDTO {
     private String code;
 
     public ContactErrorMessageDTO(String message) {
+        this.message = message;
     }
 }
